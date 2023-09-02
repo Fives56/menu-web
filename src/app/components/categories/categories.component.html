@@ -1,5 +1,7 @@
-<div *ngFor="let category of categories">
-  <app-category [category]="category"></app-category>
-</div>
+<div class="categories">
+  <div *ngFor="let category of categories">
+    <app-category [category]="category"></app-category>
+  </div>
 
-<div *ngIf="!categories || categories.length == 0">No hay categorías</div>
+  <div *ngIf="!categories || categories.length == 0">No hay categorías</div>
+</div>
