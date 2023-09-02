@@ -1,13 +1,20 @@
-<ng-container *ngIf="food">
-    <mat-card class="food">
-        <div>
-            <img class="picture" [src]="food.picture"/>
-        </div>
-        <div class="info-container">
-            <mat-card-title>{{ food.name }}</mat-card-title>
-            <mat-card-subtitle>{{ food.amount }}</mat-card-subtitle>
-            <mat-card-subtitle>{{ food.price }}</mat-card-subtitle>
-        </div>
-    </mat-card>
-</ng-container>
-
+<!-- Food -->
+<mat-card class="food">
+    <mat-card-header>
+      <mat-card-title-group>
+        <!-- Name, amount and price -->
+        <mat-card-title>{{ food.name }}</mat-card-title>
+        <mat-card-subtitle>Cantidad: {{ food.amount }}</mat-card-subtitle>
+        <mat-card-subtitle>Precio: {{ food.price }} $</mat-card-subtitle>
+        <!-- Picture -->
+        <img mat-card-image [src]="food.picture" />
+      </mat-card-title-group>
+    </mat-card-header>
+    
+    <!-- Buttons for edit and delete -->
+    <mat-card-actions align="end">
+      <button mat-icon-button><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button><mat-icon>delete</mat-icon></button>
+    </mat-card-actions>
+  </mat-card>
+  
