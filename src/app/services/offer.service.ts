@@ -1,57 +1,57 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of } from 'rxjs';
-import { Food } from '../models/food.model';
+import { Offer } from '../models/offer.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FoodService {
-  private foodsUrl = 'http://localhost:3000/food';
+export class OfferService {
+  private offersUrl = 'http://localhost:3000/offer';
 
   constructor(private http: HttpClient) {}
 
   /**
-   * GET: get the foods from the server
-   * @returns Observable with a list of foods
+   * GET: get the offers from the server
+   * @returns Observable with a list of offers
    */
   get(query: string): Observable<any> {
     return this.http
-      .get<any>(this.foodsUrl + query)
+      .get<any>(this.offersUrl + query)
       .pipe(catchError(this.handleError<any>('get', [])));
   }
 
   /**
-   * POST: add a new food to the server
-   * @param food food to be added
+   * POST: add a new offer to the server
+   * @param offer offer to be added
    * @returns An observable
    */
-  add(food: Food): Observable<Food> {
+  add(offer: Offer): Observable<Offer> {
     return this.http
-      .post<Food>(this.foodsUrl, food)
-      .pipe(catchError(this.handleError<Food>('add')));
+      .post<Offer>(this.offersUrl, offer)
+      .pipe(catchError(this.handleError<Offer>('add')));
   }
 
   /**
-   * PUT: update a food to the server
-   * @param food food to be updated
+   * PUT: update a offer to the server
+   * @param offer offer to be updated
    * @returns An observable
    */
-  update(food: Food): Observable<Food> {
+  update(offer: Offer): Observable<Offer> {
     return this.http
-      .put<Food>(this.foodsUrl + `/${food.id}`, food)
-      .pipe(catchError(this.handleError<Food>('update')));
+      .put<Offer>(this.offersUrl + `/${offer.id}`, offer)
+      .pipe(catchError(this.handleError<Offer>('update')));
   }
 
   /**
-   * DELETE: delete a food to the server
-   * @param food food to be deleted
+   * DELETE: delete a offer to the server
+   * @param offer offer to be deleted
    * @returns An observable
    */
-  delete(food: Food): Observable<Food> {
+  delete(offer: Offer): Observable<Offer> {
     return this.http
-      .delete<Food>(this.foodsUrl + `/${food.id}`)
-      .pipe(catchError(this.handleError<Food>('delete')));
+      .delete<Offer>(this.offersUrl + `/${offer.id}`)
+      .pipe(catchError(this.handleError<Offer>('delete')));
   }
 
   /**
