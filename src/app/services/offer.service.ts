@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of } from 'rxjs';
 import { Offer } from '../models/offer.model';
+import { Category } from '../models/category.model';
+import { Food } from '../models/food.model';
 
 @Injectable({
   providedIn: 'root',
@@ -52,6 +54,29 @@ export class OfferService {
     return this.http
       .delete<Offer>(this.offersUrl + `/${offer.id}`)
       .pipe(catchError(this.handleError<Offer>('delete')));
+  }
+
+  /**
+   * Short the categories and foods in offer
+   * @param offer Offer to short categories and foods
+   * @returns Array of categories with its foods
+   */
+  order(offer: Offer): any[] {
+    const categories: any[] = offer.categories;
+    const foods: any[] = offer.food;
+    let categoriesWithFoods: any[] = [];
+    
+    for (let i = 0; i < categories.length; i++) {
+      categoriesWithFoods.push(categories[i]);
+      categoriesWithFoods[i].foods = [];
+      for (let f of foods) {
+        if (f.categoryId == categories[i].id) {
+          categoriesWithFoods[i].foods.push(f);
+        }
+      }
+    }
+
+    return categoriesWithFoods;
   }
 
   /**

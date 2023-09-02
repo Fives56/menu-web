@@ -1,0 +1,5 @@
+<div *ngFor="let offer of offers">
+  <app-offer [offer]="offer"></app-offer>
+</div>
+
+<div *ngIf="!offers || offers.length == 0">No hay ofertas</div>

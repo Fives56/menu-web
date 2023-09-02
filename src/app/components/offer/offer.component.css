@@ -1,0 +1,25 @@
+.offer {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+img {
+  height: 100px;
+  width: 150px;
+  margin: 10px;
+}
+
+mat-card {
+  margin: 10px;
+  background-color: #F5F5F5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+mat-card-title {
+    margin: 10px;
+}
+
+mat-card-subtitle {
+    margin: 10px;
+}
