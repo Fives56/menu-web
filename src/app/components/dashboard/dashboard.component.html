@@ -1,0 +1,6 @@
+<ng-container *ngFor="let food of foods">
+    <app-food [food]="food" ></app-food>
+</ng-container>
+<ng-container *ngIf="!foods || foods.length == 0">
+    <h2>No se encontraron platos</h2>
+</ng-container>

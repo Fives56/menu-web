@@ -1,0 +1,13 @@
+<ng-container *ngIf="food">
+    <mat-card class="food">
+        <div>
+            <img class="picture" [src]="food.picture"/>
+        </div>
+        <div class="info-container">
+            <mat-card-title>{{ food.name }}</mat-card-title>
+            <mat-card-subtitle>{{ food.amount }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ food.price }}</mat-card-subtitle>
+        </div>
+    </mat-card>
+</ng-container>
+
