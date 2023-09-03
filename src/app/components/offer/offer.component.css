@@ -3,6 +3,14 @@
   margin: 0 auto;
 }
 
+.offer-banner{
+  display: flex;
+  justify-content: space-between;
+}
+.offer-name{
+  justify-content: start;
+}
+
 img {
   height: 100px;
   width: 150px;
@@ -16,10 +24,16 @@ mat-card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-mat-card-title {
-    margin: 10px;
+.category-banner{
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: #d0d0d0;
 }
 
-mat-card-subtitle {
-    margin: 10px;
+.category {
+  margin-top: 1em;
 }

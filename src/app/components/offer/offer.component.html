@@ -1,21 +1,23 @@
 <mat-card class="offer">
   <!-- Header with name and buttons edit and delete -->
-  <mat-card-title-group>
-    <mat-card-title>
-      {{ offer.name }}
-    </mat-card-title>
-    <mat-card-actions>
-      <button mat-icon-button><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button><mat-icon>delete</mat-icon></button>
-    </mat-card-actions>
-  </mat-card-title-group>
+  <mat-card-header class="offer-banner">
+    <div class="offer-name">
+      <mat-card-title>{{ offer.name }}</mat-card-title>
+      <mat-card-subtitle>Precio: $ {{ offer.price }}</mat-card-subtitle>
+    </div>
+    <div>
+      <mat-card-actions>
+        <button mat-icon-button><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button><mat-icon>delete</mat-icon></button>
+      </mat-card-actions>
+    </div>
+  </mat-card-header>
 
   <!-- Content with price, categories and food -->
   <mat-card-content>
-    <mat-card-title>Precio: {{ offer.price }} $</mat-card-title>
     <!-- Catetgories -->
-    <mat-card *ngFor="let c of categoriesFoods">
-      <mat-card-title>{{ c.name }}</mat-card-title>
+    <div class="category" *ngFor="let c of categoriesFoods">
+      <span class="category-banner">{{ c.name }}</span>
       <mat-card-content>
         <!-- Foods -->
         <mat-card *ngFor="let f of c.foods">
@@ -28,6 +30,6 @@
           </mat-card-header>
         </mat-card>
       </mat-card-content>
-    </mat-card>
+    </div>
   </mat-card-content>
 </mat-card>
