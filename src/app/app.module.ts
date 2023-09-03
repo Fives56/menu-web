@@ -6,7 +6,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FoodComponent } from './components/food/food.component';
@@ -37,6 +39,9 @@ import { FoodsComponent } from './components/foods/foods.component';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
+    MatMenuModule,
+
+    BrowserAnimationsModule,
     HttpClientModule,
   ],
   providers: [],

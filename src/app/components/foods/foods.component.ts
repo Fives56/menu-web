@@ -14,15 +14,52 @@ import { FoodService } from 'src/app/services/food.service';
 export class FoodsComponent implements OnInit{
   foods?: Food[]
   category?: Category
+  categories?: Category[]
+  order: string = 'name';
+  direction: string = 'asc';
+  limit: number = 10;
+  offset: number = 0;
+  count: number = 0;
 
-  constructor(private foodService: FoodService) {}
+  constructor(
+    private foodService: FoodService,
+    private categotyService: CategoryService) {}
   
   ngOnInit(): void {
     this.foodService.get('').subscribe((data) => {
       this.foods = data.rows;
     });
+    this.categotyService.get('').subscribe((data) => {
+      this.categories = data.rows;
+    })
   }
 
-  
+   /**
+   * Get the querys for the petition http
+   * @returns String of the query
+   */
+   getQuerys() {
+    // const search: string = this.searchInput.nativeElement.value;
+    const params = new URLSearchParams();
+    // params.append('search', search);
+    params.append('order', this.order);
+    params.append('direction', this.direction);
+    params.append('limit', this.limit!.toString());
+    params.append('offset', this.offset!.toString());
+    if(this.category){
+      params.append('category', this.category.id.toString());
+    }
+    return '?' + params.toString();
+  }
 
+  update() {
+    this.foodService.get(this.getQuerys()).subscribe((data) => {
+      this.foods = data.rows;
+    });
+  }
+
+  onSelect(category?: Category): void {
+    this.category = category;
+    this.update()
+  }
 }
