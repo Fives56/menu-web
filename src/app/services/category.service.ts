@@ -4,7 +4,7 @@ import { Observable, catchError, of } from 'rxjs';
 import { Category } from '../models/category.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoryService {
   private categoriesUrl = 'http://localhost:3000/category';
@@ -20,7 +20,15 @@ export class CategoryService {
       .get<any>(this.categoriesUrl + query)
       .pipe(catchError(this.handleError<any>('get', [])));
   }
-
+  /**
+   * GET: get the categories from the server
+   * @returns Observable with a list of categories
+   */
+  getOne(id: number): Observable<Category> {
+    return this.http
+      .get<Category>(this.categoriesUrl + `/${id}`)
+      .pipe(catchError(this.handleError<any>('getOne', [])));
+  }
   /**
    * POST: add a new category to the server
    * @param category category to be added
