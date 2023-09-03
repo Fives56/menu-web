@@ -1,0 +1,16 @@
+.category-banner{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    padding: 1em;
+    border-bottom: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #d0d0d0;
+}
+
+.foods {
+    margin: 0 10em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 10px;
+}

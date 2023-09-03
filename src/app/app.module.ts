@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OffersComponent } from './components/offers/offers.component';
 import { OfferComponent } from './components/offer/offer.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { FoodsComponent } from './components/foods/foods.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
     MenuComponent,
     OffersComponent,
     OfferComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    FoodsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
     MatDialogModule,
     MatButtonModule,
     MatCardModule,
+    MatToolbarModule,
     HttpClientModule,
   ],
   providers: [],

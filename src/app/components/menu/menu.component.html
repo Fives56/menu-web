@@ -1,12 +1,9 @@
-<header>
-  <header>
-    <h1>Menu</h1>
-    <nav>
-      <a routerLink="/categories">Categorías</a>
-      <a routerLink="/offers">Ofertas</a>
-    </nav>
-  </header>
-</header>
+<mat-toolbar class="tool-bar">
+    <span>Menu</span>
+    <button mat-button [routerLink]="['/categories']" routerLinkActive="active">Inicio</button>
+    <button mat-button [routerLink]="['/foods']" routerLinkActive="active">Platos</button>
+    <button mat-button [routerLink]="['/offers']" routerLinkActive="active">Ofertas</button>
+</mat-toolbar>
 <main>
   <router-outlet></router-outlet>
 </main>

@@ -1,0 +1,15 @@
+<div class="category-banner">
+    <h2 *ngIf="category">
+      {{ category.name }}
+    </h2>
+</div>
+
+<div class="foods">
+    <div *ngFor="let food of foods" align="center">
+        <app-food [food]="food"></app-food>
+      </div>
+      <!-- If are not foods -->
+      <div *ngIf="!foods || foods.length == 0">
+        <mat-card-title>No se encontraron comidas, presiona + para añadir</mat-card-title>
+    </div>
+</div>
