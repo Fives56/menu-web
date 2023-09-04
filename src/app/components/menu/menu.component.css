@@ -1,19 +1,24 @@
-.tool-bar {
-  width:100%;
-  background-color: #b57c00;
+.nav-bar {
+  background-color:#FBC02D;
   padding: 0.7em;
-  margin-bottom: 0.5em;
-  z-index: 100;
+  z-index: 10;
+  position: fixed;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 }
 
 span {
+  font-size: 2em;
   color: #fff;
-  margin: auto 5em auto 0.3em;
+  margin: auto 2em auto 0.3em;
 }
 button {
   margin-left: 1em;
 }
 
 .active {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #F9A825;
+}
+
+main{
+  padding-top: 64px;
 }

@@ -1,11 +1,12 @@
 .category-banner{
   width: 50%;
-  margin: auto;
+  background-color: #FFF9C4;
+  margin: 0 auto;
   display: flex;
-  padding: 1em;
+  padding: 1em 10em 0;
   border-bottom: 2px;
   border-bottom-style: solid;
-  border-bottom-color: #d0d0d0;
+  border-bottom-color: #FBC02D;
 }
 .category-banner h2{
   margin: auto
@@ -19,8 +20,7 @@
 }
 
 .category{
-  margin: 2em;
-  border-bottom: 2px;
+  border-bottom: 3px;
   border-bottom-style: solid;
-  border-bottom-color: #d0d0d0;
+  border-bottom-color: #fff;
 }

@@ -1,4 +1,4 @@
-<div class="category-banner">
+<mat-toolbar class="category-banner">
     <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>expand_more</mat-icon>
     </button>
@@ -12,11 +12,15 @@
     </mat-menu>
     <h2 *ngIf="category; else noCategory">
         {{ category.name }}
-      </h2>
-      <ng-template #noCategory>
+    </h2>
+    <ng-template #noCategory>
         <h2>Todos los platos</h2>
-      </ng-template>
-</div>
+    </ng-template>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-toolbar>
 
 <div class="foods">
     <div *ngFor="let food of foods" align="center">

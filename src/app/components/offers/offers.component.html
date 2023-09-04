@@ -1,5 +1,15 @@
-<div *ngFor="let offer of offers">
-  <app-offer [offer]="offer"></app-offer>
+<mat-toolbar class="offer-banner">
+  <h2>Ofertas</h2>
+  <span class="spacer"></span>
+  <button mat-icon-button>
+      <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="offers">
+  <div *ngFor="let offer of offers">
+    <app-offer [offer]="offer"></app-offer>
+  </div>
 </div>
 
 <div *ngIf="!offers || offers.length == 0">No hay ofertas</div>

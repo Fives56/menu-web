@@ -1,0 +1,14 @@
+.offer-banner{
+    background-color: #FFEE58;
+    position: fixed;
+    z-index: 5;
+    padding: 1em 15em;
+}
+
+.spacer{
+    flex: auto;
+}
+
+.offers{
+    margin-top: 6em;
+}

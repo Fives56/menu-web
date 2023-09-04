@@ -1,7 +1,8 @@
 .food {
   width: 300px;
   padding: 10px;
-  margin: 2em
+  margin: 2em;
+  background-color: #FFF59D;
 }
 
 .food img {
