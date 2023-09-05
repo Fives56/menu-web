@@ -1,3 +1,7 @@
+<mat-form-field class="search-input">
+  <mat-label><mat-icon>search</mat-icon></mat-label>
+  <input #searchInput matInput (input)="update()" />
+</mat-form-field>
 <mat-toolbar class="offer-banner">
   <h2>Ofertas</h2>
   <span class="spacer"></span>
@@ -10,6 +14,6 @@
   <div *ngFor="let offer of offers">
     <app-offer [offer]="offer"></app-offer>
   </div>
+  <h2 class="not-found" *ngIf="!offers || offers.length == 0">No se encontraron ofertas, presiona + para añadir</h2>
 </div>
 
-<div *ngIf="!offers || offers.length == 0">No hay ofertas</div>

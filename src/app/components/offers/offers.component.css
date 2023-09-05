@@ -10,5 +10,16 @@
 }
 
 .offers{
-    margin-top: 6em;
+    margin: 6em 10em 0;
+}
+
+.search-input{
+    position: fixed;
+    z-index: 15;
+    top: 0.2em;
+    right: 5em; 
+}
+
+.not-found{
+    margin: 0 200px;
 }

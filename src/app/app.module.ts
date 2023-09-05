@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +42,8 @@ import { FoodsComponent } from './components/foods/foods.component';
     MatCardModule,
     MatToolbarModule,
     MatMenuModule,
-
+    MatInputModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
     HttpClientModule,
   ],

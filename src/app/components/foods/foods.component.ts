@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
@@ -12,6 +12,9 @@ import { FoodService } from 'src/app/services/food.service';
   styleUrls: ['./foods.component.css']
 })
 export class FoodsComponent implements OnInit{
+
+  @ViewChild('searchInput') searchInput!: ElementRef;
+
   foods?: Food[]
   category?: Category
   categories?: Category[]
@@ -20,6 +23,7 @@ export class FoodsComponent implements OnInit{
   limit: number = 10;
   offset: number = 0;
   count: number = 0;
+  search: string ='';
 
   constructor(
     private foodService: FoodService,
@@ -39,9 +43,9 @@ export class FoodsComponent implements OnInit{
    * @returns String of the query
    */
    getQuerys() {
-    // const search: string = this.searchInput.nativeElement.value;
+    this.search = this.searchInput.nativeElement.value;
     const params = new URLSearchParams();
-    // params.append('search', search);
+    params.append('search', this.search);
     params.append('order', this.order);
     params.append('direction', this.direction);
     params.append('limit', this.limit!.toString());
