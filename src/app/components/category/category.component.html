@@ -1,16 +1,24 @@
 <div class="category">
   <!-- Title -->
-    <mat-toolbar class="category-banner">
-      <h2>
-        {{ category.name }}
-      </h2>
-    </mat-toolbar>
+  <mat-toolbar class="category-banner">
+    <h2>
+      {{ category.name }}
+    </h2>
+  </mat-toolbar>
 
   <!-- Foods -->
-  <mat-card-content class="foods">
-    <div *ngFor="let food of foods" align="center">
-      <app-food [food]="food"></app-food>
+  <mat-card-content class="content" align="center">
+    <div class="foods">
+      <div *ngFor="let food of foods" align="center">
+        <app-food [food]="food"></app-food>
+      </div>
     </div>
+    <app-paginator
+      *ngIf="foods"
+      [length]="count"
+      [pageSize]="2"
+      (updatePagination)="updateOffset($event)"
+    ></app-paginator>
     <!-- If are not foods -->
     <div *ngIf="!foods || foods.length == 0">
       <mat-card-title

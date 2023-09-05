@@ -2,7 +2,7 @@
   <h2>Ofertas</h2>
   <span class="spacer"></span>
   <button mat-icon-button>
-      <mat-icon>add</mat-icon>
+    <mat-icon>add</mat-icon>
   </button>
 </mat-toolbar>
 
@@ -10,6 +10,15 @@
   <div *ngFor="let offer of offers">
     <app-offer [offer]="offer"></app-offer>
   </div>
+</div>
+
+<!-- Paginator -->
+<div *ngIf="offers" class="paginator">
+  <app-paginator
+    [length]="count"
+    [pageSize]="10"
+    (updatePagination)="updateOffset($event)"
+  ></app-paginator>
 </div>
 
 <div *ngIf="!offers || offers.length == 0">No hay ofertas</div>

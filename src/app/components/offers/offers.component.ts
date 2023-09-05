@@ -9,12 +9,50 @@ import { OfferService } from 'src/app/services/offer.service';
 })
 export class OffersComponent implements OnInit {
   offers!: Offer[];
+  order: string = 'name';
+  direction: string = 'asc';
+  limit: number = 10;
+  offset: number = 0;
+  count: number = 0;
 
   constructor(private offerService: OfferService) {}
   
   ngOnInit(): void {
-    this.offerService.get('').subscribe((data) => {
+    this.update()
+  }
+
+  /**
+   * Get the querys for the petition http
+   * @returns String of the query
+   */
+  getQuerys() {
+    // const search: string = this.searchInput.nativeElement.value;
+    const params = new URLSearchParams();
+    // params.append('search', search);
+    params.append('order', this.order);
+    params.append('direction', this.direction);
+    params.append('limit', this.limit!.toString());
+    params.append('offset', this.offset!.toString());
+    
+    return '?' + params.toString();
+  }
+
+  /**
+   * Update the offset
+   * @param offset offset recived of paginator
+   */
+  updateOffset(offset: number) {
+    this.offset = offset;
+    this.update();
+  }
+
+  /**
+   * Update the list of offers
+   */
+  update() {
+    this.offerService.get(this.getQuerys()).subscribe((data) => {
       this.offers = data.rows;
+      this.count = data.count;
     });
   }
 }

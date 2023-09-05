@@ -12,3 +12,16 @@
 .offers{
     margin-top: 6em;
 }
+
+.paginator {
+  background-color: #FFF59D;
+  display: flex;
+  position: fixed;
+  z-index: 5;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 40%;
+  padding: 10px;
+  border: #FBC02D solid;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+}

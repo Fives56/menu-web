@@ -31,3 +31,12 @@
         <mat-card-title>No se encontraron comidas, presiona + para añadir</mat-card-title>
     </div>
 </div>
+
+<!-- Paginator -->
+<div *ngIf="foods" class="paginator">
+    <app-paginator
+      [length]="count"
+      [pageSize]="10"
+      (updatePagination)="updateOffset($event)"
+    ></app-paginator>
+  </div>

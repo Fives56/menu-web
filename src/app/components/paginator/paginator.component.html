@@ -1,0 +1,10 @@
+<button mat-icon-button (click)="previousPage()">
+    <mat-icon>chevron_left</mat-icon>
+</button>
+<button mat-icon-button (click)="nextPage()">
+    <mat-icon>chevron_right</mat-icon>
+</button>
+<label *ngIf="page*pageSize < length; else withLength">{{ page*pageSize }} / {{ length }}</label>
+<ng-template #withLength>
+    <label >{{ length }} / {{ length }}</label>
+</ng-template>

@@ -42,16 +42,24 @@ export class CategoryComponent implements OnInit {
         })
       ).subscribe((data) => {
         this.foods = data.rows;
-        this.count = this.count;
+        this.count = data.count;
       });
     } else {
       this.foodService.get(this.getQuerys()).subscribe((data) => {
         this.foods = data.rows;
-        this.count = this.count;
+        this.count = data.count;
       });
     }
   }
   
+  /**
+   * Update the offset
+   * @param offset offset recived of paginator
+   */
+  updateOffset(offset: number) {
+    this.offset = offset;
+    this.getFoods();
+  }
 
   /**
    * Get the querys for the petition http

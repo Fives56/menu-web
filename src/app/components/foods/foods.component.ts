@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
 import { Food } from 'src/app/models/food.model';
 import { CategoryService } from 'src/app/services/category.service';
@@ -28,8 +26,9 @@ export class FoodsComponent implements OnInit{
   ngOnInit(): void {
     this.foodService.get('').subscribe((data) => {
       this.foods = data.rows;
+      this.count = data.count;
     });
-    this.categotyService.get('').subscribe((data) => {
+    this.categotyService.get('?pagination=false').subscribe((data) => {
       this.categories = data.rows;
     })
   }
@@ -52,14 +51,31 @@ export class FoodsComponent implements OnInit{
     return '?' + params.toString();
   }
 
+  /**
+   * Update the list of foods
+   */
   update() {
     this.foodService.get(this.getQuerys()).subscribe((data) => {
       this.foods = data.rows;
+      this.count = data.count;
     });
   }
 
+  /**
+   * Get the foods of the selected category
+   * @param category Category selected
+   */
   onSelect(category?: Category): void {
     this.category = category;
     this.update()
+  }
+
+  /**
+   * Update the offset
+   * @param offset offset recived of paginator
+   */
+  updateOffset(offset: number) {
+    this.offset = offset;
+    this.update();
   }
 }

@@ -19,6 +19,7 @@ import { OffersComponent } from './components/offers/offers.component';
 import { OfferComponent } from './components/offer/offer.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { FoodsComponent } from './components/foods/foods.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FoodsComponent } from './components/foods/foods.component';
     OffersComponent,
     OfferComponent,
     CategoriesComponent,
-    FoodsComponent
+    FoodsComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
