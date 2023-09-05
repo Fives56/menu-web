@@ -1,5 +1,5 @@
 <mat-form-field class="search-input">
-    <mat-label><mat-icon>search</mat-icon></mat-label>
+    <mat-label><mat-icon>search</mat-icon> Buscar en platos</mat-label>
     <input #searchInput matInput (input)="update()" />
 </mat-form-field>
 <mat-toolbar class="category-banner">
@@ -26,13 +26,13 @@
     </button>
 </mat-toolbar>
 
+<mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
 <div class="foods">
-    <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
     <div *ngFor="let food of foods" align="center">
         <app-food [food]="food"></app-food>
       </div>
       <!-- If are not foods -->
-      <h2 class="not-found" *ngIf="!foods || foods.length == 0">No se encontraron comidas, presiona + para añadir</h2>
+      <h2 class="not-found" *ngIf="(!foods || foods.length == 0) && !loading">No se encontraron comidas, presiona + para añadir</h2>
 </div>
 
 <!-- Paginator -->

@@ -1,5 +1,5 @@
 <mat-form-field class="search-input">
-  <mat-label><mat-icon>search</mat-icon></mat-label>
+  <mat-label><mat-icon>search</mat-icon> Buscar en categorías</mat-label>
   <input #searchInput matInput (input)="update()" />
 </mat-form-field>
 
@@ -8,5 +8,10 @@
   <div *ngFor="let category of categories">
     <app-category [category]="category"></app-category>
   </div>
-  <h2 class="not-found" *ngIf="!categories || categories.length == 0">No se encontraron categorias</h2>
+  <h2
+    class="not-found"
+    *ngIf="(!categories || categories.length == 0) && !loading"
+  >
+    No se encontraron categorias
+  </h2>
 </div>

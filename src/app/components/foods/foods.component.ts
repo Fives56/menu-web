@@ -62,9 +62,11 @@ export class FoodsComponent implements OnInit{
    * Update the list of foods
    */
   update() {
+    this.loading = true;
     this.foodService.get(this.getQuerys()).subscribe((data) => {
       this.foods = data.rows;
       this.count = data.count;
+      this.loading = false;
     });
   }
 

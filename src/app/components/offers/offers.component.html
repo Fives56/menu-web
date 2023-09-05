@@ -1,5 +1,5 @@
 <mat-form-field class="search-input">
-  <mat-label><mat-icon>search</mat-icon></mat-label>
+  <mat-label><mat-icon>search</mat-icon> Buscar en ofertas</mat-label>
   <input #searchInput matInput (input)="update()" />
 </mat-form-field>
 <mat-toolbar class="offer-banner">
@@ -15,7 +15,7 @@
   <div *ngFor="let offer of offers">
     <app-offer [offer]="offer"></app-offer>
   </div>
-  <h2 class="not-found" *ngIf="!offers || offers.length == 0">No se encontraron ofertas, presiona + para añadir</h2>
+  <h2 class="not-found" *ngIf="(!offers || offers.length == 0) && !loading">No se encontraron ofertas, presiona + para añadir</h2>
 </div>
 
 <!-- Paginator -->

@@ -10,6 +10,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoriesComponent {
   categories!: Category[];
   loading: boolean = false;
+  pagination: boolean = false;
   order: string = 'name';
   direction: string = 'asc';
   limit: number = 10;
@@ -30,6 +31,7 @@ export class CategoriesComponent {
     const params = new URLSearchParams();
     params.append('search', this.search);
     params.append('order', this.order);
+    params.append('pagination', this.pagination.toString());
     params.append('direction', this.direction);
     params.append('limit', this.limit!.toString());
     params.append('offset', this.offset!.toString());
@@ -38,8 +40,10 @@ export class CategoriesComponent {
   }
 
   update() {
+    this.loading = true;
     this.categoryService.get(this.getQuerys()).subscribe((data) => {
       this.categories = data.rows;
+      this.loading = false;
     });
   }
 
