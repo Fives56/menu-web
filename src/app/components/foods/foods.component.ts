@@ -18,15 +18,18 @@ export class FoodsComponent implements OnInit{
   limit: number = 10;
   offset: number = 0;
   count: number = 0;
+  loading: boolean = false;
 
   constructor(
     private foodService: FoodService,
     private categotyService: CategoryService) {}
   
   ngOnInit(): void {
+    this.loading = true;
     this.foodService.get('').subscribe((data) => {
       this.foods = data.rows;
       this.count = data.count;
+      this.loading = false;
     });
     this.categotyService.get('?pagination=false').subscribe((data) => {
       this.categories = data.rows;

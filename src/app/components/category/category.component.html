@@ -13,6 +13,7 @@
         <app-food [food]="food"></app-food>
       </div>
     </div>
+    <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
     <app-paginator
       *ngIf="foods"
       [length]="count"
@@ -20,7 +21,7 @@
       (updatePagination)="updateOffset($event)"
     ></app-paginator>
     <!-- If are not foods -->
-    <div *ngIf="!foods || foods.length == 0">
+    <div *ngIf="(!foods || foods.length == 0) && !loading">
       <mat-card-title
         >No se encontraron comidas, presiona + para añadir</mat-card-title
       >

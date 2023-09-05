@@ -1,7 +1,8 @@
 <div class="categories">
+  <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
   <div *ngFor="let category of categories">
     <app-category [category]="category"></app-category>
   </div>
 
-  <div *ngIf="!categories || categories.length == 0">No hay categorías</div>
+  <div *ngIf="(!categories || categories.length == 0) && !loading">No hay categorías</div>
 </div>

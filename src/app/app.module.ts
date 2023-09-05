@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,22 +32,22 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     OfferComponent,
     CategoriesComponent,
     FoodsComponent,
-    PaginatorComponent
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
     MatMenuModule,
-
-    BrowserAnimationsModule,
-    HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

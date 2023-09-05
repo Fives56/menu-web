@@ -7,6 +7,7 @@
 </mat-toolbar>
 
 <div class="offers">
+  <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
   <div *ngFor="let offer of offers">
     <app-offer [offer]="offer"></app-offer>
   </div>
@@ -21,4 +22,4 @@
   ></app-paginator>
 </div>
 
-<div *ngIf="!offers || offers.length == 0">No hay ofertas</div>
+<div *ngIf="(!offers || offers.length == 0) && !loading">No hay ofertas</div>

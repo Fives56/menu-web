@@ -9,12 +9,15 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoriesComponent {
   categories!: Category[];
+  loading: boolean = false;
 
   constructor(private categoryService: CategoryService) {}
 
   ngOnInit(): void {
-    this.categoryService.get('').subscribe((data) => {
+    this.loading = true;
+    this.categoryService.get('?pagination=false').subscribe((data) => {
       this.categories = data.rows;
+      this.loading = false
     });
   }
 }

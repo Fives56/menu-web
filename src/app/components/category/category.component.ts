@@ -21,6 +21,7 @@ export class CategoryComponent implements OnInit {
   limit: number = 2;
   offset: number = 0;
   count: number = 0;
+  loading: boolean = false;
 
   constructor(
     private foodService: FoodService,
@@ -32,6 +33,7 @@ export class CategoryComponent implements OnInit {
    * Get the list of foods
    */
   getFoods() {
+    this.loading = true;
     if (this.id && !this.category) {
       this.categoryService.getOne(this.id).pipe(
         switchMap((c) => {
@@ -43,11 +45,13 @@ export class CategoryComponent implements OnInit {
       ).subscribe((data) => {
         this.foods = data.rows;
         this.count = data.count;
+        this.loading = false;
       });
     } else {
       this.foodService.get(this.getQuerys()).subscribe((data) => {
         this.foods = data.rows;
         this.count = data.count;
+        this.loading = false;
       });
     }
   }

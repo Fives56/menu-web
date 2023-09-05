@@ -14,6 +14,7 @@ export class OffersComponent implements OnInit {
   limit: number = 10;
   offset: number = 0;
   count: number = 0;
+  loading: boolean = false;
 
   constructor(private offerService: OfferService) {}
   
@@ -50,9 +51,11 @@ export class OffersComponent implements OnInit {
    * Update the list of offers
    */
   update() {
+    this.loading = true;
     this.offerService.get(this.getQuerys()).subscribe((data) => {
       this.offers = data.rows;
       this.count = data.count;
+      this.loading = false;
     });
   }
 }

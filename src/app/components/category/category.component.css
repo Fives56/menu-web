@@ -22,8 +22,12 @@
   gap: 10px;
 }
 
-.category{
+.category {
   border-bottom: 3px;
   border-bottom-style: solid;
   border-bottom-color: #fff;
+}
+
+mat-spinner {
+  margin: 10px auto;
 }
