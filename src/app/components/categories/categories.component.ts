@@ -8,17 +8,17 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./categories.component.css'],
 })
 export class CategoriesComponent {
-
-  @ViewChild('searchInput') searchInput!: ElementRef;
-
   categories!: Category[];
+  loading: boolean = false;
   order: string = 'name';
   direction: string = 'asc';
   limit: number = 10;
   offset: number = 0;
   count: number = 0;
   search: string ='';
-  
+
+  @ViewChild('searchInput') searchInput!: ElementRef;
+
   constructor(private categoryService: CategoryService) {}
 
   /**
@@ -44,8 +44,10 @@ export class CategoriesComponent {
   }
 
   ngOnInit(): void {
-    this.categoryService.get('').subscribe((data) => {
+    this.loading = true;
+    this.categoryService.get('?pagination=false').subscribe((data) => {
       this.categories = data.rows;
+      this.loading = false
     });
   }
 }

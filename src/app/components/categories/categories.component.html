@@ -4,6 +4,7 @@
 </mat-form-field>
 
 <div class="categories">
+  <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
   <div *ngFor="let category of categories">
     <app-category [category]="category"></app-category>
   </div>

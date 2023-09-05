@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { OffersComponent } from './components/offers/offers.component';
 import { OfferComponent } from './components/offer/offer.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { FoodsComponent } from './components/foods/foods.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,14 @@ import { FoodsComponent } from './components/foods/foods.component';
     OffersComponent,
     OfferComponent,
     CategoriesComponent,
-    FoodsComponent
+    FoodsComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
@@ -46,8 +51,9 @@ import { FoodsComponent } from './components/foods/foods.component';
     MatFormFieldModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

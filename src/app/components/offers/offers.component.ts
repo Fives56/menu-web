@@ -11,13 +11,14 @@ export class OffersComponent implements OnInit {
   
   @ViewChild('searchInput') searchInput!: ElementRef;
 
-  offers?: Offer[]
+  offers!: Offer[];
   order: string = 'name';
   direction: string = 'asc';
   limit: number = 10;
   offset: number = 0;
   count: number = 0;
   search: string ='';
+  loading: boolean = false;
 
   constructor(private offerService: OfferService) {}
 
@@ -37,15 +38,33 @@ export class OffersComponent implements OnInit {
     return '?' + params.toString();
   }
 
-  update() {
-    this.offerService.get(this.getQuerys()).subscribe((data) => {
+  ngOnInit(): void {
+    this.loading = true;
+    this.offerService.get('').subscribe((data) => {
       this.offers = data.rows;
+      this.count = data.count;
+      this.loading = false;
     });
   }
 
-  ngOnInit(): void {
-    this.offerService.get('').subscribe((data) => {
+  /**
+   * Update the offset
+   * @param offset offset recived of paginator
+   */
+  updateOffset(offset: number) {
+    this.offset = offset;
+    this.update();
+  }
+
+  /**
+   * Update the list of offers
+   */
+  update() {
+    this.loading = true;
+    this.offerService.get(this.getQuerys()).subscribe((data) => {
       this.offers = data.rows;
+      this.count = data.count;
+      this.loading = false;
     });
   }
 }
