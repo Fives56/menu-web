@@ -10,6 +10,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,10 +21,13 @@ import { CategoryComponent } from './components/category/category.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OffersComponent } from './components/offers/offers.component';
-import { OfferComponent } from './components/offer/offer.component';
+import { OfferComponent } from './components/offer/offer.component'; 
 import { CategoriesComponent } from './components/categories/categories.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
+import { ModalEditCreateFoodComponent } from './components/modal-edit-create-food/modal-edit-create-food.component';
+import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     CategoriesComponent,
     FoodsComponent,
     PaginatorComponent,
+    ActionButtonsComponent,
+    ModalEditCreateFoodComponent,
+    ModalConfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +60,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    FormsModule,
+    MatSelectModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

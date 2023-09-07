@@ -1,8 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { switchMap } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
 import { Food } from 'src/app/models/food.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { FoodService } from 'src/app/services/food.service';
+import { ModalEditCreateFoodComponent } from '../modal-edit-create-food/modal-edit-create-food.component';
 
 @Component({
   selector: 'app-foods',
@@ -25,6 +28,7 @@ export class FoodsComponent implements OnInit{
   loading: boolean = false;
 
   constructor(
+    public dialog: MatDialog,
     private foodService: FoodService,
     private categotyService: CategoryService) {}
   
@@ -68,6 +72,26 @@ export class FoodsComponent implements OnInit{
       this.count = data.count;
       this.loading = false;
     });
+  }
+
+  openDialog(): void{
+    let dialogRef;
+
+    dialogRef = this.dialog.open(ModalEditCreateFoodComponent,{
+      height: '415px',
+      width: '350px',
+      data: {}
+    })
+    
+    dialogRef?.afterClosed()
+    .pipe(
+      switchMap((res) => {
+        return this.foodService.add(res);
+      })
+    )
+    .subscribe(() => {
+      this.update();
+    })
   }
 
   /**

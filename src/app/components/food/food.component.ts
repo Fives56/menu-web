@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Food } from 'src/app/models/food.model';
 
 @Component({
@@ -8,4 +8,9 @@ import { Food } from 'src/app/models/food.model';
 })
 export class FoodComponent {
   @Input() food!: Food;
+  @Output() updateEmitter = new EventEmitter<any>();
+
+  update(){
+    this.updateEmitter.emit();
+  }
 }

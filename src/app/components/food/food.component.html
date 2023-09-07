@@ -11,8 +11,7 @@
     
     <!-- Buttons for edit and delete -->
     <mat-card-actions class="buttons">
-      <button mat-icon-button><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button><mat-icon>delete</mat-icon></button>
+      <app-action-buttons [food]="food" (updateEmitter)="update()"></app-action-buttons>
     </mat-card-actions>
   </mat-card>
   
