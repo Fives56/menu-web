@@ -10,8 +10,10 @@
       </div>
     
     <!-- Buttons for edit and delete -->
-    <mat-card-actions class="buttons">
-      <app-action-buttons [food]="food" (updateEmitter)="update()"></app-action-buttons>
-    </mat-card-actions>
+    <ng-container *ngIf="currentUrl === '/foods'">
+      <mat-card-actions class="buttons">
+        <app-action-buttons [food]="food" (updateEmitter)="update()"></app-action-buttons>
+      </mat-card-actions>
+    </ng-container>
   </mat-card>
   

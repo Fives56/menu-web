@@ -62,7 +62,6 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
     MatProgressSpinnerModule,
     FormsModule,
     MatSelectModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent],
