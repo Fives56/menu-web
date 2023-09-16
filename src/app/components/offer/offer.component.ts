@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Offer } from 'src/app/models/offer.model';
 import { OfferService } from 'src/app/services/offer.service';
 
@@ -9,13 +9,17 @@ import { OfferService } from 'src/app/services/offer.service';
 })
 export class OfferComponent implements OnInit {
   @Input() offer!: Offer;
+  @Output() updateEmitter = new EventEmitter<any>();
   categoriesFoods!: any[];
-
+ 
   constructor(private offerService: OfferService) {}
 
   ngOnInit(): void {
     this.categoriesFoods = this.offerService.order(this.offer);
-    console.log(this.categoriesFoods)
+  }
+
+  update(){
+    this.updateEmitter.emit();
   }
 
 

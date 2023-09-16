@@ -1,6 +1,8 @@
-<div mat-dialog-content class="food">
-    <div mat-dialog-title class="food-title">{{ headerTitle }}</div>
 
+<div mat-dialog-content class="food">
+    
+    <div mat-dialog-title class="food-title">{{ headerTitle }}</div>
+    
     <div class="picture-container">
         <img [src]="currentPicture" class="picture" (error)="pictureError()">
     </div>
@@ -34,7 +36,7 @@
         </mat-select>
     </mat-form-field>
 
-    <div>
+    <div mat-dialog-action>
         <button mat-icon-button (click)="onClickAcept()"><mat-icon>edit</mat-icon></button>
         <button mat-icon-button (click)="onClickNo()"><mat-icon>delete</mat-icon></button>
     </div>

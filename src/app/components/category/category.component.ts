@@ -38,7 +38,6 @@ export class CategoryComponent implements OnInit {
       this.categoryService.getOne(this.id).pipe(
         switchMap((c) => {
           this.category = c;
-          console.log(this.category);
           this.limit = 10;
           return this.foodService.get(this.getQuerys());
         })

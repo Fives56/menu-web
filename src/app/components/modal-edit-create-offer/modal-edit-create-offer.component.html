@@ -1,0 +1,89 @@
+<div mat-dialog-title class="offer-header"> 
+    <p>
+        {{headerTitle}} 
+    </p>
+
+    <div mat-dialog-action align="center" class="action" (click)="onClickEdit()">
+        <button mat-icon-button>
+            <mat-icon>editar</mat-icon>
+        </button>
+    </div>
+
+</div>
+
+<div mat-dialog-content class="offer">  
+
+    <div class="name-price-content">
+        <mat-form-field class="name">
+            <mat-label> Nombre </mat-label>
+            <input matInput [(ngModel)]="name" required>
+        </mat-form-field>
+    
+        <mat-form-field class="price">
+            <mat-label> Precio </mat-label>
+            <input matInput [(ngModel)]="price" required type="number">
+        </mat-form-field>
+    </div>
+    
+     <!--add category-->
+    <div class="add-category"> 
+        <p> Agregar </p>
+        <button mat-icon-button (click)="addCategory()"> 
+            <mat-icon>add</mat-icon>
+        </button> 
+    </div>
+
+    <div class="category-container" *ngFor="let category of categoriesFoods; let i = index">
+        
+        <!-- delete category -->
+        <div class="category-header">
+            <p> Categoría </p>
+            <button mat-icon-button (click)="deleteCategory(i)"> 
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+        
+        <!--select category-->
+        <mat-form-field class="category">
+            <mat-label> {{category.name}} </mat-label>
+            <mat-select  require [(ngModel)]="categories[i]" >
+                <mat-option *ngFor="let c of allCategories" [value]="c"  >
+                    {{c.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <div> Platos </div>
+
+        <div class="food-container" *ngFor="let food of category.foods; let j = index">
+            
+            <!--select food-->
+            <div class="food-options">
+
+                <mat-form-field class="food">
+                <mat-label> {{food.name}} </mat-label>
+                <mat-select  require (selectionChange)="onChangeFood($event, j)">  
+                    <mat-option *ngFor="let f of allFoods" [value]="f" >
+                        {{f.name}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+
+                <button mat-icon-button (click)="deleteFood(i, j)"> 
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+            </div>
+            
+            
+        </div>
+
+         <!--add food-->
+        <div mat-dialog-action align="center">
+            <button mat-icon-button (click)="addFood(i)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+
+</div>
