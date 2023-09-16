@@ -16,19 +16,21 @@
   <mat-card-content>
     <!-- Catetgories -->
     <div class="category" *ngFor="let c of categoriesFoods">
-      <span class="category-banner">{{ c.name }}</span>
-      <mat-card-content>
-        <!-- Foods -->
-        <mat-card *ngFor="let f of c.foods" class="foods">
-          <mat-card-header>
-            <mat-card-title-group>
-              <mat-card-title>{{ f.name }}</mat-card-title>
-              <mat-card-subtitle>{{ f.amount }}</mat-card-subtitle>
-              <img mat-card-image [src]="f.picture" />
-            </mat-card-title-group>
-          </mat-card-header>
-        </mat-card>
-      </mat-card-content>
+      <div *ngIf="c.foods.length>0">
+        <span class="category-banner">{{ c.name }}</span>
+        <mat-card-content>
+          <!-- Foods -->
+          <mat-card *ngFor="let f of c.foods" class="foods">
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>{{ f.name }}</mat-card-title>
+                <mat-card-subtitle>{{ f.amount }}</mat-card-subtitle>
+                <img mat-card-image [src]="f.picture" />
+              </mat-card-title-group>
+            </mat-card-header>
+          </mat-card>
+        </mat-card-content>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>

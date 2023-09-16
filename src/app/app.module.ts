@@ -64,7 +64,6 @@ import { ModalEditCreateOfferComponent } from './components/modal-edit-create-of
     MatProgressSpinnerModule,
     FormsModule,
     MatSelectModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent],
