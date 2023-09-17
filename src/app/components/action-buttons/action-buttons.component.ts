@@ -67,8 +67,7 @@ export class ActionButtonsComponent {
       }
 
       dialogRef = this.dialog.open(ModalEditCreateFoodComponent,{
-       height: '415px',
-       width: '350px',
+       width: '380px',
         data: data,
       })
     }
