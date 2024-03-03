@@ -9,6 +9,7 @@ import { OfferService } from 'src/app/services/offer.service';
 })
 export class OfferComponent implements OnInit {
   @Input() offer!: Offer;
+  @Input() isAdmin!: boolean;
   categoriesFoods!: any[];
 
   constructor(private offerService: OfferService) {}

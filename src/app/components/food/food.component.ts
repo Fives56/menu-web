@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router'
 import { Food } from 'src/app/models/food.model';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-food',
@@ -9,6 +10,7 @@ import { Food } from 'src/app/models/food.model';
 })
 export class FoodComponent {
   @Input() food!: Food;
+  @Input() isAdmin!: boolean;
   @Output() updateEmitter = new EventEmitter<any>();
 
   currentUrl: string;

@@ -6,6 +6,7 @@ import { Food } from 'src/app/models/food.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { FoodService } from 'src/app/services/food.service';
 import { ModalEditCreateFoodComponent } from '../modal-edit-create-food/modal-edit-create-food.component';
+import { UsersService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-foods',
@@ -26,13 +27,18 @@ export class FoodsComponent implements OnInit{
   count: number = 0;
   search: string ='';
   loading: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(
     public dialog: MatDialog,
     private foodService: FoodService,
-    private categotyService: CategoryService) {}
+    private categotyService: CategoryService,
+    private usersService: UsersService) {}
   
   ngOnInit(): void {
+    this.usersService.getUser().subscribe((data) => {
+      this.isAdmin = data.isAdmin;
+    });
     this.loading = true;
     this.foodService.get('').subscribe((data) => {
       this.foods = data.rows;

@@ -11,7 +11,7 @@
     
     <!-- Buttons for edit and delete -->
     <ng-container *ngIf="currentUrl === '/foods'">
-      <mat-card-actions class="buttons">
+      <mat-card-actions class="buttons" *ngIf="isAdmin">
         <app-action-buttons [food]="food" (updateEmitter)="update()"></app-action-buttons>
       </mat-card-actions>
     </ng-container>

@@ -1,8 +1,11 @@
 <mat-toolbar class="nav-bar">
     <span class="title">Menu</span>
-    <button mat-button [routerLink]="['/categories']" routerLinkActive="active">Inicio</button>
-    <button mat-button [routerLink]="['/foods']" routerLinkActive="active">Platos</button>
-    <button mat-button [routerLink]="['/offers']" routerLinkActive="active">Ofertas</button>
+    <div class="comp-nav">
+      <button mat-button [routerLink]="['/categories']" routerLinkActive="active">Inicio</button>
+      <button mat-button [routerLink]="['/foods']" routerLinkActive="active">Platos</button>
+      <button mat-button [routerLink]="['/offers']" routerLinkActive="active">Ofertas</button>
+    </div>
+    <buttom class="user-nav" mat-icon-button [routerLink]="['/login']" routerLinkActive="active"><mat-icon>person</mat-icon></buttom>
 </mat-toolbar>
 <main>
   <router-outlet></router-outlet>

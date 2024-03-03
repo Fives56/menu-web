@@ -6,7 +6,7 @@
       <mat-card-subtitle>Precio: $ {{ offer.price }}</mat-card-subtitle>
     </div>
     <div>
-      <mat-card-actions>
+      <mat-card-actions *ngIf="isAdmin">
         <button mat-icon-button><mat-icon>edit</mat-icon></button>
         <button mat-icon-button><mat-icon>delete</mat-icon></button>
       </mat-card-actions>

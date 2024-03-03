@@ -19,7 +19,7 @@ import { AppComponent } from './app.component';
 import { FoodComponent } from './components/food/food.component';
 import { CategoryComponent } from './components/category/category.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { OffersComponent } from './components/offers/offers.component';
 import { OfferComponent } from './components/offer/offer.component'; 
 import { CategoriesComponent } from './components/categories/categories.component';
@@ -28,6 +28,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
 import { ModalEditCreateFoodComponent } from './components/modal-edit-create-food/modal-edit-create-food.component';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
+import { LoginComponent } from "./components/login/login.component";
+import { CookieService } from "ngx-cookie-service";
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
     ActionButtonsComponent,
     ModalEditCreateFoodComponent,
     ModalConfirmComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,7 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
     FormsModule,
     MatSelectModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

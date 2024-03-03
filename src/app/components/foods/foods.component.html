@@ -21,7 +21,7 @@
         <h2>Todos los platos</h2>
     </ng-template>
     <span class="spacer"></span>
-    <button mat-icon-button (click)="openDialog()">
+    <button mat-icon-button (click)="openDialog()" *ngIf="isAdmin">
         <mat-icon>add</mat-icon>
     </button>
 </mat-toolbar>
@@ -29,7 +29,7 @@
 <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
 <div class="foods">
     <div *ngFor="let food of foods" align="center">
-        <app-food [food]="food" (updateEmitter)="update()"></app-food>
+        <app-food [food]="food" [isAdmin]="isAdmin" (updateEmitter)="update()"></app-food>
       </div>
       <!-- If are not foods -->
       <h2 class="not-found" *ngIf="(!foods || foods.length == 0) && !loading">No se encontraron comidas, presiona + para añadir</h2>

@@ -11,7 +11,7 @@
   color: #fff;
   margin: auto 2em auto 0.3em;
 }
-button {
+.comp-nav button {
   margin-left: 1em;
 }
 
@@ -25,4 +25,11 @@ main{
 
 .divider{
   flex:auto
+}
+
+.user-nav{
+  position: fixed;
+  z-index: 15;
+  top: 1em;
+  right: 1em; 
 }

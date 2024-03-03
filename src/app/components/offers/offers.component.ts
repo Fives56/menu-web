@@ -1,14 +1,14 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Offer } from 'src/app/models/offer.model';
 import { OfferService } from 'src/app/services/offer.service';
+import { UsersService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-offers',
   templateUrl: './offers.component.html',
-  styleUrls: ['./offers.component.css']
+  styleUrls: ['./offers.component.css'],
 })
 export class OffersComponent implements OnInit {
-  
   @ViewChild('searchInput') searchInput!: ElementRef;
 
   offers!: Offer[];
@@ -17,16 +17,20 @@ export class OffersComponent implements OnInit {
   limit: number = 10;
   offset: number = 0;
   count: number = 0;
-  search: string ='';
+  search: string = '';
   loading: boolean = false;
+  isAdmin: boolean = false;
 
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private usersService: UsersService
+  ) {}
 
-   /**
+  /**
    * Get the querys for the petition http
    * @returns String of the query
    */
-   getQuerys() {
+  getQuerys() {
     this.search = this.searchInput.nativeElement.value;
     const params = new URLSearchParams();
     params.append('search', this.search);
@@ -34,11 +38,14 @@ export class OffersComponent implements OnInit {
     params.append('direction', this.direction);
     params.append('limit', this.limit!.toString());
     params.append('offset', this.offset!.toString());
-  
+
     return '?' + params.toString();
   }
 
   ngOnInit(): void {
+    this.usersService.getUser().subscribe((data) => {
+      this.isAdmin = data.isAdmin;
+    });
     this.loading = true;
     this.offerService.get('').subscribe((data) => {
       this.offers = data.rows;
