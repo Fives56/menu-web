@@ -7,10 +7,12 @@ div{
 }
 
 .food-title{
-    width: 300px;
+    width: 310px;
     position: sticky;
     top: -20px;
     z-index: 100;
+    border: none;
+    margin: 0 auto;
 }
 
 .food{
@@ -18,7 +20,8 @@ div{
 }
 
 .picture{
-    width: 100%;
+    margin: 0 auto;
+    width: 90%;
     height: 100%;
 }
 

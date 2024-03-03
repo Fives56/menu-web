@@ -10,7 +10,7 @@
   <mat-card-content class="content" align="center">
     <div class="foods">
       <div *ngFor="let food of foods" align="center">
-        <app-food [food]="food"></app-food>
+        <app-food [food]="food" (updateEmitter)="getFoods()"></app-food>
       </div>
     </div>
     <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>

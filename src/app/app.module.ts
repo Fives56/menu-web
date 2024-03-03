@@ -28,6 +28,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
 import { ModalEditCreateFoodComponent } from './components/modal-edit-create-food/modal-edit-create-food.component';
 import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
+import { ModalEditCreateOfferComponent } from './components/modal-edit-create-offer/modal-edit-create-offer.component';
 import { LoginComponent } from "./components/login/login.component";
 import { CookieService } from "ngx-cookie-service";
 
@@ -45,6 +46,7 @@ import { CookieService } from "ngx-cookie-service";
     ActionButtonsComponent,
     ModalEditCreateFoodComponent,
     ModalConfirmComponent,
+    ModalEditCreateOfferComponent,
     LoginComponent,
   ],
   imports: [

@@ -5,7 +5,7 @@
 <mat-toolbar class="offer-banner">
   <h2>Ofertas</h2>
   <span class="spacer"></span>
-  <button mat-icon-button *ngIf="isAdmin">
+  <button mat-icon-button (click)="openDialog()" *ngIf="isAdmin">
     <mat-icon>add</mat-icon>
   </button>
 </mat-toolbar>
@@ -13,7 +13,7 @@
 <div class="offers">
   <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
   <div *ngFor="let offer of offers">
-    <app-offer [offer]="offer" [isAdmin]="isAdmin"></app-offer>
+    <app-offer [offer]="offer" (updateEmitter)="update()" [isAdmin]="isAdmin"></app-offer>
   </div>
   <h2 class="not-found" *ngIf="(!offers || offers.length == 0) && !loading">No se encontraron ofertas, presiona + para añadir</h2>
 </div>

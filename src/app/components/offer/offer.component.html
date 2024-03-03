@@ -7,8 +7,7 @@
     </div>
     <div>
       <mat-card-actions *ngIf="isAdmin">
-        <button mat-icon-button><mat-icon>edit</mat-icon></button>
-        <button mat-icon-button><mat-icon>delete</mat-icon></button>
+        <app-action-buttons [target]="offer" [isOffer]="true" (updateEmitter)="update()" ></app-action-buttons>
       </mat-card-actions>
     </div>
   </mat-card-header>

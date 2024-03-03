@@ -16,9 +16,9 @@ export class ModalEditCreateFoodComponent implements OnInit, AfterViewInit {
   amount: string;
   price: number;
   picture: string;
-  currentPicture: string;
+  currentPicture: string
   categoryId: number;
-  headerTitle: string = '';
+  headerTitle: string = ''; 
   categories!: Category[];
 
   validate: MatFormField[] = [];

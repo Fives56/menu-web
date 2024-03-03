@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { switchMap } from 'rxjs';
 import { Offer } from 'src/app/models/offer.model';
 import { OfferService } from 'src/app/services/offer.service';
+import { ModalEditCreateOfferComponent } from '../modal-edit-create-offer/modal-edit-create-offer.component';
 import { UsersService } from 'src/app/services/user.service';
 
 @Component({
@@ -21,7 +24,10 @@ export class OffersComponent implements OnInit {
   loading: boolean = false;
   isAdmin: boolean = false;
 
+
   constructor(
+    public dialog: MatDialog,
+    
     private offerService: OfferService,
     private usersService: UsersService
   ) {}
@@ -61,6 +67,28 @@ export class OffersComponent implements OnInit {
   updateOffset(offset: number) {
     this.offset = offset;
     this.update();
+  }
+
+  /**
+   * open dialog to create a new offer
+   */
+  openDialog(){
+    let dialogRef;
+
+    dialogRef = this.dialog.open(ModalEditCreateOfferComponent,{
+      width: '450px',
+      data: {}
+    })
+    
+    dialogRef?.afterClosed()
+    .pipe(
+      switchMap((res) => {
+        return this.offerService.add(res);
+      })
+    )
+    .subscribe(() => {
+      this.update();
+    })
   }
 
   /**

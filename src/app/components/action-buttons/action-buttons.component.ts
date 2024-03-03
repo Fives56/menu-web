@@ -2,9 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, switchMap } from 'rxjs';
 import { Food } from 'src/app/models/food.model';
+import { Offer } from 'src/app/models/offer.model';
 import { FoodService } from 'src/app/services/food.service';
+import { OfferService } from 'src/app/services/offer.service';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 import { ModalEditCreateFoodComponent } from '../modal-edit-create-food/modal-edit-create-food.component';
+import { ModalEditCreateOfferComponent } from '../modal-edit-create-offer/modal-edit-create-offer.component';
 
 @Component({
   selector: 'app-action-buttons',
@@ -12,16 +15,18 @@ import { ModalEditCreateFoodComponent } from '../modal-edit-create-food/modal-ed
   styleUrls: ['./action-buttons.component.css']
 })
 export class ActionButtonsComponent {
-  @Input() food?: Food; 
+  @Input() isOffer!: boolean; 
+  @Input() target!: any; 
   @Output() updateEmitter = new EventEmitter<any>();
 
   constructor(
     public dialog: MatDialog, 
-    private foodService: FoodService
+    private foodService: FoodService,
+    private offerService: OfferService
   ){}
   
   /**
-   * delete food method
+   * delete food or offer method
    */
   delete(){
     let dialogRef;
@@ -34,9 +39,9 @@ export class ActionButtonsComponent {
       .pipe(
         filter( res => !!res),
         switchMap(() => {
-          return this.food 
-            ? this.foodService.delete(this.food)
-            : 'No se encontro el plato' ;
+          return (this.isOffer)
+            ? this.offerService.delete(this.target)
+            : this.foodService.delete(this.target);
         })
       )
       .subscribe(() => {
@@ -45,33 +50,52 @@ export class ActionButtonsComponent {
   }
 
   /**
-   * Open a dialog box to edit or create food
-   * @param data - object whit the data of the food to be create or edited 
+   * Open a dialog box to edit  food or offer
+   * @param data - object whit the data of the food or offer to be edited 
    */
   openDialog(){
     let dialogRef;
 
-    if(this.food){
+    if(this.target && !this.isOffer){
       const data = {
-        id: this.food.id,
-        name: this.food.name,
-        picture: this.food.picture,
-        amount: this.food.amount,
-        price: this.food.price,
-        categoryId: this.food.categoryId,
+        id: this.target.id,
+        name: this.target.name,
+        picture: this.target.picture,
+        amount: this.target.amount,
+        price: this.target.price,
+        categoryId: this.target.categoryId,
       }
 
       dialogRef = this.dialog.open(ModalEditCreateFoodComponent,{
-      height: '415px',
-      width: '350px',
-      data: data,
-    })
-  }
+       width: '380px',
+        data: data,
+      })
+    }
+    
+    else if ( this.target && this.isOffer) {
+      const data = {
+        id: this.target.id,
+        name: this.target.name,
+        price: this.target.price,
+        categories: this.target.categories,
+        food: this.target.food
+      }
+
+      dialogRef = this.dialog.open(ModalEditCreateOfferComponent,{
+        width: '450px',
+        data: data,
+       })
+
+    }
   
   dialogRef?.afterClosed()
     .pipe(
+      filter(res => !!res),
       switchMap((res) => {
-        return this.foodService.update(res);
+        return (this.isOffer)
+        ? this.offerService.update(res)
+        : this.foodService.update(res);
+        
       })
     )
     .subscribe(() => {
