@@ -28,7 +28,7 @@ export class FoodsComponent implements OnInit{
   search: string ='';
   loading: boolean = false;
   isAdmin: boolean = false;
-
+  isAuth?: boolean
   constructor(
     public dialog: MatDialog,
     private foodService: FoodService,

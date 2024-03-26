@@ -5,7 +5,10 @@
       <button mat-button [routerLink]="['/foods']" routerLinkActive="active">Platos</button>
       <button mat-button [routerLink]="['/offers']" routerLinkActive="active">Ofertas</button>
     </div>
-    <buttom mat-icon-button class="user-nav" [routerLink]="['/login']" routerLinkActive="active"><mat-icon>account_circle</mat-icon></buttom>
+    <div *ngIf="isAuth"  class="user-nav"> 
+      <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
 </mat-toolbar>
 <main>
   <router-outlet></router-outlet>

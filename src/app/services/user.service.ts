@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, catchError, of } from "rxjs";
+import { Observable, Subject, catchError, of } from "rxjs";
 import { User } from "../models/user.model";
 import { CookieService } from "ngx-cookie-service";
 
@@ -10,6 +10,7 @@ import { CookieService } from "ngx-cookie-service";
 export class UsersService {
   private authUrl = 'http://localhost:3000/auth';
   private userUrl = 'http://localhost:3000/user';
+  private authStatus = new Subject<boolean>();
 
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
@@ -20,16 +21,26 @@ export class UsersService {
   
   setToken(token: string) {
     this.cookies.set("token", token);
+    this.authStatus.next(true);
   }
 
   getToken() {
     return this.cookies.get("token");
   }
 
+  deleteToken() {
+    this.cookies.delete("token");
+    this.authStatus.next(false);
+  }  
+
   getUser(): Observable<User> {
     const token = this.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<User>(this.userUrl + '/me', { headers });
+  }
+
+  getAuthStatus() {
+    return this.authStatus.asObservable();
   }
 
   /**
