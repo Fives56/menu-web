@@ -1,0 +1,21 @@
+.food {
+  width: 300px;
+  padding: 10px;
+  margin: 2em;
+  background-color: #FFF59D;
+}
+
+.food img {
+  height: 150px;
+  width: auto;
+}
+
+.info-container {
+  width: auto;
+  margin: 5px 0;
+  align-items: start;
+}
+
+.buttons, .info-container {
+  display: inline-block;
+}

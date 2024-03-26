@@ -1,0 +1,17 @@
+.categories {
+    margin: 0 auto;
+}
+
+.search-input{
+    position: fixed;
+    z-index: 15;
+    top: 0.2em;
+    right: 5em; 
+}
+
+.not-found{
+    margin: 64px 500px;
+}
+mat-spinner {
+    margin: 10px auto;
+}

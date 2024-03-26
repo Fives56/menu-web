@@ -1,0 +1,12 @@
+<mat-toolbar class="nav-bar">
+    <span class="title">Menú</span>
+    <div class="comp-nav">
+      <button mat-button [routerLink]="['/categories']" routerLinkActive="active">Inicio</button>
+      <button mat-button [routerLink]="['/foods']" routerLinkActive="active">Platos</button>
+      <button mat-button [routerLink]="['/offers']" routerLinkActive="active">Ofertas</button>
+    </div>
+    <buttom mat-icon-button class="user-nav" [routerLink]="['/login']" routerLinkActive="active"><mat-icon>account_circle</mat-icon></buttom>
+</mat-toolbar>
+<main>
+  <router-outlet></router-outlet>
+</main>

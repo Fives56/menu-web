@@ -1,0 +1,46 @@
+.nav-bar {
+  background-color:#FBC02D;
+  padding: 0.7em;
+  z-index: 10;
+  position: fixed;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+}
+
+.title{
+  font-size: 2em;
+  color: #fff;
+  margin: auto 2em auto 0.3em;
+}
+.comp-nav button {
+  margin-left: 1em;
+}
+
+.active {
+  background-color: #F9A825;
+}
+
+main{
+  padding-top: 64px;
+}
+
+.divider{
+  flex:auto
+}
+
+.user-nav{
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  z-index: 15;
+  right: 1.5em; 
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-nav mat-icon{
+  display: block;
+  border-radius: 50%;
+}

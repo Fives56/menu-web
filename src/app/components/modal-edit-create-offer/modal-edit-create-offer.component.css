@@ -1,0 +1,62 @@
+
+.cdk-global-scrollblock {
+    overflow: hidden;
+}
+
+.offer-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: min-content;
+    width: 450px;
+    position: sticky;
+    top: -20px;
+    z-index: 100;
+    background-color: #FBC02D;
+    box-shadow: 0 2px 5px #00000042;
+}
+
+.name-price-content{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name-price-content .name , .price{
+  margin: 10px;
+}
+
+.add-category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.offer{
+    background-color: #FFF59D;
+}
+
+.category, .food{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.category-header{
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    border-bottom: 2px solid #FBC02D;
+    box-shadow: 4 2px 5px #00000042;
+    margin-bottom: 10px
+}
+
+.food-options{
+    display: flex;
+}
+
+.food-options .food{
+    flex-grow: 1;
+}
+

@@ -1,0 +1,20 @@
+<mat-card class="login">
+    <form class="custom-form" method="post">
+      <h1>Inicio de sesión</h1>
+      <input
+        type="string"
+        [(ngModel)]="name"
+        name="name"
+        placeholder="Nombre"
+        required="required"
+      />
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Contraseña"
+        required="required"
+      />
+      <button mat-button type="submit" (click)="login()">Acceder</button>
+    </form>
+  </mat-card>

@@ -1,0 +1,36 @@
+<mat-card class="offer">
+  <!-- Header with name and buttons edit and delete -->
+  <mat-card-header class="offer-banner">
+    <div class="offer-name">
+      <mat-card-title>{{ offer.name }}</mat-card-title>
+      <mat-card-subtitle>Precio: $ {{ offer.price }}</mat-card-subtitle>
+    </div>
+    <div>
+      <mat-card-actions *ngIf="isAdmin">
+        <app-action-buttons [target]="offer" [isOffer]="true" (updateEmitter)="update()" ></app-action-buttons>
+      </mat-card-actions>
+    </div>
+  </mat-card-header>
+
+  <!-- Content with price, categories and food -->
+  <mat-card-content>
+    <!-- Catetgories -->
+    <div class="category" *ngFor="let c of categoriesFoods">
+      <div *ngIf="c.foods.length>0">
+        <span class="category-banner">{{ c.name }}</span>
+        <mat-card-content>
+          <!-- Foods -->
+          <mat-card *ngFor="let f of c.foods" class="foods">
+            <mat-card-header>
+              <mat-card-title-group>
+                <mat-card-title>{{ f.name }}</mat-card-title>
+                <mat-card-subtitle>{{ f.amount }}</mat-card-subtitle>
+                <img mat-card-image [src]="f.picture" />
+              </mat-card-title-group>
+            </mat-card-header>
+          </mat-card>
+        </mat-card-content>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

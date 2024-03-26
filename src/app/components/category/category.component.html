@@ -1,0 +1,30 @@
+<div class="category">
+  <!-- Title -->
+  <mat-toolbar class="category-banner">
+    <h2>
+      {{ category.name }}
+    </h2>
+  </mat-toolbar>
+
+  <!-- Foods -->
+  <mat-card-content class="content" align="center">
+    <div class="foods">
+      <div *ngFor="let food of foods" align="center">
+        <app-food [food]="food" (updateEmitter)="getFoods()"></app-food>
+      </div>
+    </div>
+    <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
+    <app-paginator
+      *ngIf="foods"
+      [length]="count"
+      [pageSize]="2"
+      (updatePagination)="updateOffset($event)"
+    ></app-paginator>
+    <!-- If are not foods -->
+    <div *ngIf="(!foods || foods.length == 0) && !loading">
+      <mat-card-title
+        >No se encontraron comidas, presiona + para añadir</mat-card-title
+      >
+    </div>
+  </mat-card-content>
+</div>

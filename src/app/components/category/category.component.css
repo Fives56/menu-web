@@ -1,0 +1,33 @@
+.category-banner{
+  width: 50%;
+  background-color: #FFF9C4;
+  margin: 0 auto;
+  display: flex;
+  padding: 1em 10em 0;
+  border-bottom: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: #FBC02D;
+}
+.category-banner h2{
+  margin: auto
+}
+
+.content {
+  margin: 0 10em;
+}
+
+.foods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 10px;
+}
+
+.category {
+  border-bottom: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: #fff;
+}
+
+mat-spinner {
+  margin: 10px auto;
+}

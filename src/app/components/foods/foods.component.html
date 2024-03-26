@@ -1,0 +1,45 @@
+<mat-form-field class="search-input">
+    <mat-label><mat-icon>search</mat-icon> Buscar </mat-label>
+    <input #searchInput matInput (input)="update()" />
+</mat-form-field>
+<mat-toolbar class="category-banner">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>expand_more</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" >
+        <button mat-menu-item (click)="onSelect()">Todos</button>
+        <div *ngFor="let c of categories" (click)="onSelect(c)">
+        <button mat-menu-item>
+            <span>{{c.name}}</span>
+        </button>
+        </div>
+    </mat-menu>
+    <h2 *ngIf="category; else noCategory">
+        {{ category.name }}
+    </h2>
+    <ng-template #noCategory>
+        <h2>Todos los platos</h2>
+    </ng-template>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="openDialog()" *ngIf="isAdmin">
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
+<div class="foods">
+    <div *ngFor="let food of foods" align="center">
+        <app-food [food]="food" [isAdmin]="isAdmin" (updateEmitter)="update()"></app-food>
+      </div>
+      <!-- If are not foods -->
+      <h2 class="not-found" *ngIf="(!foods || foods.length == 0) && !loading">No se encontraron comidas, presiona + para añadir</h2>
+</div>
+
+<!-- Paginator -->
+<div *ngIf="foods" class="paginator">
+    <app-paginator
+      [length]="count"
+      [pageSize]="10"
+      (updatePagination)="updateOffset($event)"
+    ></app-paginator>
+  </div>
