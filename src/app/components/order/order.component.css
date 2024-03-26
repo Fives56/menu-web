@@ -1,10 +1,10 @@
-.offer {
+.order {
   max-width: 500px;
   margin: 2em auto;
   background-color: #FFF59D;
 }
 
-.offer-banner{
+.order-banner{
   display: flex;
   justify-content: space-between;
   margin-bottom: 1em;
@@ -13,7 +13,7 @@
   background-color: #FBC02D;
   box-shadow: 0 2px 5px #00000042;
 }
-.offer-name{
+.order-name{
   justify-content: start;
 }
 

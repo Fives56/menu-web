@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, switchMap } from 'rxjs';
 import { Food } from 'src/app/models/food.model';
-import { Offer } from 'src/app/models/offer.model';
+import { Order } from 'src/app/models/order.model';
 import { FoodService } from 'src/app/services/food.service';
-import { OfferService } from 'src/app/services/offer.service';
+import { OrderService } from 'src/app/services/order.service';
 import { ModalConfirmComponent } from '../modal-confirm/modal-confirm.component';
 import { ModalEditCreateFoodComponent } from '../modal-edit-create-food/modal-edit-create-food.component';
-import { ModalEditCreateOfferComponent } from '../modal-edit-create-offer/modal-edit-create-offer.component';
+import { ModalEditCreateOrderComponent } from '../modal-edit-create-order/modal-edit-create-order.component';
 
 @Component({
   selector: 'app-action-buttons',
@@ -15,18 +15,18 @@ import { ModalEditCreateOfferComponent } from '../modal-edit-create-offer/modal-
   styleUrls: ['./action-buttons.component.css']
 })
 export class ActionButtonsComponent {
-  @Input() isOffer!: boolean; 
+  @Input() isOrder!: boolean; 
   @Input() target!: any; 
   @Output() updateEmitter = new EventEmitter<any>();
 
   constructor(
     public dialog: MatDialog, 
     private foodService: FoodService,
-    private offerService: OfferService
+    private orderService: OrderService
   ){}
   
   /**
-   * delete food or offer method
+   * delete food or order method
    */
   delete(){
     let dialogRef;
@@ -39,8 +39,8 @@ export class ActionButtonsComponent {
       .pipe(
         filter( res => !!res),
         switchMap(() => {
-          return (this.isOffer)
-            ? this.offerService.delete(this.target)
+          return (this.isOrder)
+            ? this.orderService.delete(this.target)
             : this.foodService.delete(this.target);
         })
       )
@@ -50,13 +50,13 @@ export class ActionButtonsComponent {
   }
 
   /**
-   * Open a dialog box to edit  food or offer
-   * @param data - object whit the data of the food or offer to be edited 
+   * Open a dialog box to edit  food or order
+   * @param data - object whit the data of the food or order to be edited 
    */
   openDialog(){
     let dialogRef;
 
-    if(this.target && !this.isOffer){
+    if(this.target && !this.isOrder){
       const data = {
         id: this.target.id,
         name: this.target.name,
@@ -72,7 +72,7 @@ export class ActionButtonsComponent {
       })
     }
     
-    else if ( this.target && this.isOffer) {
+    else if ( this.target && this.isOrder) {
       const data = {
         id: this.target.id,
         name: this.target.name,
@@ -81,7 +81,7 @@ export class ActionButtonsComponent {
         food: this.target.food
       }
 
-      dialogRef = this.dialog.open(ModalEditCreateOfferComponent,{
+      dialogRef = this.dialog.open(ModalEditCreateOrderComponent,{
         width: '450px',
         data: data,
        })
@@ -92,8 +92,8 @@ export class ActionButtonsComponent {
     .pipe(
       filter(res => !!res),
       switchMap((res) => {
-        return (this.isOffer)
-        ? this.offerService.update(res)
+        return (this.isOrder)
+        ? this.orderService.update(res)
         : this.foodService.update(res);
         
       })

@@ -1,67 +1,67 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of } from 'rxjs';
-import { Offer } from '../models/offer.model';
+import { Order } from '../models/order.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OfferService {
-  private offersUrl = 'http://localhost:3000/offer';
+export class OrderService {
+  private ordersUrl = 'http://localhost:3000/order';
 
   constructor(private http: HttpClient) {}
 
   /**
-   * GET: get the offers from the server
-   * @returns Observable with a list of offers
+   * GET: get the orders from the server
+   * @returns Observable with a list of orders
    */
   get(query: string): Observable<any> {
     return this.http
-      .get<any>(this.offersUrl + query)
+      .get<any>(this.ordersUrl + query)
       .pipe(catchError(this.handleError<any>('get', [])));
   }
 
   /**
-   * POST: add a new offer to the server
-   * @param offer offer to be added
+   * POST: add a new order to the server
+   * @param order order to be added
    * @returns An observable
    */
-  add(offer: Offer): Observable<Offer> {
+  add(order: Order): Observable<Order> {
     return this.http
-      .post<Offer>(this.offersUrl, offer)
-      .pipe(catchError(this.handleError<Offer>('add')));
+      .post<Order>(this.ordersUrl, order)
+      .pipe(catchError(this.handleError<Order>('add')));
   }
 
   /**
-   * PUT: update a offer to the server
-   * @param offer offer to be updated
+   * PUT: update a order to the server
+   * @param order order to be updated
    * @returns An observable
    */
-  update(offer: Offer): Observable<Offer> {
+  update(order: Order): Observable<Order> {
     return this.http
-      .put<Offer>(this.offersUrl + `/${offer.id}`, offer)
-      .pipe(catchError(this.handleError<Offer>('update')));
+      .put<Order>(this.ordersUrl + `/${order.id}`, order)
+      .pipe(catchError(this.handleError<Order>('update')));
   }
 
   /**
-   * DELETE: delete a offer to the server
-   * @param offer offer to be deleted
+   * DELETE: delete a order to the server
+   * @param order order to be deleted
    * @returns An observable
    */
-  delete(offer: Offer): Observable<Offer> {
+  delete(order: Order): Observable<Order> {
     return this.http
-      .delete<Offer>(this.offersUrl + `/${offer.id}`)
-      .pipe(catchError(this.handleError<Offer>('delete')));
+      .delete<Order>(this.ordersUrl + `/${order.id}`)
+      .pipe(catchError(this.handleError<Order>('delete')));
   }
 
   /**
-   * Short the categories and foods in offer
-   * @param offer Offer to short categories and foods
+   * Short the categories and foods in order
+   * @param order Order to short categories and foods
    * @returns Array of categories with its foods
    */
-  order(offer: Offer): any[] {
-    const categories: any[] = offer.categories;
-    const foods: any[] = offer.food;
+  order(order: Order): any[] {
+    const categories: any[] = order.categories;
+    const foods: any[] = order.food;
     let categoriesWithFoods: any[] = [];
     
     for (let i = 0; i < categories.length; i++) {

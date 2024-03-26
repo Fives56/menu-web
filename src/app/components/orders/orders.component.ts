@@ -1,20 +1,20 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { switchMap } from 'rxjs';
-import { Offer } from 'src/app/models/offer.model';
-import { OfferService } from 'src/app/services/offer.service';
-import { ModalEditCreateOfferComponent } from '../modal-edit-create-offer/modal-edit-create-offer.component';
+import { Order } from 'src/app/models/order.model';
+import { OrderService } from 'src/app/services/order.service';
+import { ModalEditCreateOrderComponent } from '../modal-edit-create-order/modal-edit-create-order.component';
 import { UsersService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-offers',
-  templateUrl: './offers.component.html',
-  styleUrls: ['./offers.component.css'],
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.css'],
 })
-export class OffersComponent implements OnInit {
+export class OrdersComponent implements OnInit {
   @ViewChild('searchInput') searchInput!: ElementRef;
 
-  offers!: Offer[];
+  orders!: Order[];
   order: string = 'name';
   direction: string = 'asc';
   limit: number = 10;
@@ -28,7 +28,7 @@ export class OffersComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     
-    private offerService: OfferService,
+    private orderService: OrderService,
     private usersService: UsersService
   ) {}
 
@@ -53,8 +53,8 @@ export class OffersComponent implements OnInit {
       this.isAdmin = data.isAdmin;
     });
     this.loading = true;
-    this.offerService.get('').subscribe((data) => {
-      this.offers = data.rows;
+    this.orderService.get('').subscribe((data) => {
+      this.orders = data.rows;
       this.count = data.count;
       this.loading = false;
     });
@@ -70,12 +70,12 @@ export class OffersComponent implements OnInit {
   }
 
   /**
-   * open dialog to create a new offer
+   * open dialog to create a new order
    */
   openDialog(){
     let dialogRef;
 
-    dialogRef = this.dialog.open(ModalEditCreateOfferComponent,{
+    dialogRef = this.dialog.open(ModalEditCreateOrderComponent,{
       width: '450px',
       data: {}
     })
@@ -83,7 +83,7 @@ export class OffersComponent implements OnInit {
     dialogRef?.afterClosed()
     .pipe(
       switchMap((res) => {
-        return this.offerService.add(res);
+        return this.orderService.add(res);
       })
     )
     .subscribe(() => {
@@ -92,12 +92,12 @@ export class OffersComponent implements OnInit {
   }
 
   /**
-   * Update the list of offers
+   * Update the list of orders
    */
   update() {
     this.loading = true;
-    this.offerService.get(this.getQuerys()).subscribe((data) => {
-      this.offers = data.rows;
+    this.orderService.get(this.getQuerys()).subscribe((data) => {
+      this.orders = data.rows;
       this.count = data.count;
       this.loading = false;
     });

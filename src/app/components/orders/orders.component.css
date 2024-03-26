@@ -1,4 +1,4 @@
-.offer-banner{
+.order-banner{
     background-color: #FFEE58;
     position: fixed;
     z-index: 5;
@@ -9,7 +9,7 @@
     flex: auto;
 }
 
-.offers{
+.orders{
     margin: 6em 10em 0;
 }
 

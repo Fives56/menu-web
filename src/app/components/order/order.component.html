@@ -1,13 +1,13 @@
-<mat-card class="offer">
+<mat-card class="order">
   <!-- Header with name and buttons edit and delete -->
-  <mat-card-header class="offer-banner">
-    <div class="offer-name">
-      <mat-card-title>{{ offer.name }}</mat-card-title>
-      <mat-card-subtitle>Precio: $ {{ offer.price }}</mat-card-subtitle>
+  <mat-card-header class="order-banner">
+    <div class="order-name">
+      <mat-card-title>{{ order.name }}</mat-card-title>
+      <mat-card-subtitle>Precio: $ {{ order.price }}</mat-card-subtitle>
     </div>
     <div>
       <mat-card-actions *ngIf="isAdmin">
-        <app-action-buttons [target]="offer" [isOffer]="true" (updateEmitter)="update()" ></app-action-buttons>
+        <app-action-buttons [target]="order" [isOrder]="true" (updateEmitter)="update()" ></app-action-buttons>
       </mat-card-actions>
     </div>
   </mat-card-header>

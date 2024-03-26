@@ -2,17 +2,17 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Category } from 'src/app/models/category.model';
 import { Food } from 'src/app/models/food.model';
-import { Offer } from 'src/app/models/offer.model';
+import { Order } from 'src/app/models/order.model';
 import { CategoryService } from 'src/app/services/category.service';
 import { FoodService } from 'src/app/services/food.service';
-import { OfferService } from 'src/app/services/offer.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
-  selector: 'app-modal-edit-create-offer',
-  templateUrl: './modal-edit-create-offer.component.html',
-  styleUrls: ['./modal-edit-create-offer.component.css'],
+  selector: 'app-modal-edit-create-order',
+  templateUrl: './modal-edit-create-order.component.html',
+  styleUrls: ['./modal-edit-create-order.component.css'],
 })
-export class ModalEditCreateOfferComponent {
+export class ModalEditCreateOrderComponent {
   id: number;
   name: string;
   price: number;
@@ -24,9 +24,9 @@ export class ModalEditCreateOfferComponent {
   allFoods!: Food[] | any[];
 
   constructor(
-    public dialogRef: MatDialogRef<ModalEditCreateOfferComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Offer,
-    private offerService: OfferService,
+    public dialogRef: MatDialogRef<ModalEditCreateOrderComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Order,
+    private orderService: OrderService,
     private foodService: FoodService,
     private categoryService: CategoryService
   ) {
@@ -45,7 +45,7 @@ export class ModalEditCreateOfferComponent {
   }
 
   ngOnInit(): void {
-    this.categoriesFoods = this.offerService.order(this.data);
+    this.categoriesFoods = this.orderService.order(this.data);
   }
 
   /**
@@ -70,7 +70,7 @@ export class ModalEditCreateOfferComponent {
       this.categoriesFoods.push(this.allCategories[0]);
     }
     this.categories.push(this.allCategories[0]);
-    this.categoriesFoods = this.offerService.order(this.data);
+    this.categoriesFoods = this.orderService.order(this.data);
   }
 
   /**

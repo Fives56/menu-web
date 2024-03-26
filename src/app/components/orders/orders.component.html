@@ -2,24 +2,24 @@
   <mat-label><mat-icon>search</mat-icon> Buscar </mat-label>
   <input #searchInput matInput (input)="update()" />
 </mat-form-field>
-<mat-toolbar class="offer-banner">
-  <h2>Ofertas</h2>
+<mat-toolbar class="order-banner">
+  <h2>Órdenes</h2>
   <span class="spacer"></span>
   <button mat-icon-button (click)="openDialog()" *ngIf="isAdmin">
     <mat-icon>add</mat-icon>
   </button>
 </mat-toolbar>
 
-<div class="offers">
+<div class="orders">
   <mat-spinner *ngIf="loading" [diameter]="34"></mat-spinner>
-  <div *ngFor="let offer of offers">
-    <app-offer [offer]="offer" (updateEmitter)="update()" [isAdmin]="isAdmin"></app-offer>
+  <div *ngFor="let order of orders">
+    <app-order [order]="order" (updateEmitter)="update()" [isAdmin]="isAdmin"></app-order>
   </div>
-  <h2 class="not-found" *ngIf="(!offers || offers.length == 0) && !loading">No se encontraron ofertas, presiona + para añadir</h2>
+  <h2 class="not-found" *ngIf="(!orders || orders.length == 0) && !loading">No se encontraron ofertas, presiona + para añadir</h2>
 </div>
 
 <!-- Paginator -->
-<div *ngIf="offers" class="paginator">
+<div *ngIf="orders" class="paginator">
   <app-paginator
     [length]="count"
     [pageSize]="10"
