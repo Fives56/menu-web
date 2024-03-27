@@ -27,18 +27,19 @@ export class FoodsComponent implements OnInit{
   count: number = 0;
   search: string ='';
   loading: boolean = false;
+  token?: string
   isAdmin: boolean = false;
-  isAuth?: boolean
   constructor(
     public dialog: MatDialog,
     private foodService: FoodService,
     private categotyService: CategoryService,
     private usersService: UsersService) {}
-  
+
   ngOnInit(): void {
-    this.usersService.getUser().subscribe((data) => {
-      this.isAdmin = data.isAdmin;
-    });
+    this.token = this.usersService.getToken();
+    if(this.token){
+      this.isAdmin = true;
+    }
     this.loading = true;
     this.foodService.get('').subscribe((data) => {
       this.foods = data.rows;
